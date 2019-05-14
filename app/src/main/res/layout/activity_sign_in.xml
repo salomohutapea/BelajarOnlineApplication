@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".SignInActivity"
+        android:background="@android:color/white">
+    <android.support.v7.widget.CardView android:layout_width="match_parent"
+                                        android:layout_margin="40px"
+                                        android:id="@+id/lrProgressBar"
+                                        android:layout_centerInParent="true"
+                                        android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <ProgressBar android:layout_width="match_parent" android:layout_weight="3" android:layout_height="wrap_content"/>
+            <TextView android:gravity="center" android:layout_width="match_parent" android:layout_weight="1" android:layout_height="match_parent" android:text="Please Wait"/>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView
+                    android:text="BelajarOnline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTitleSignIn"
+                    android:textSize="60px"
+                    android:fontFamily="@font/montserrat"
+                    android:layout_marginTop="200px"
+                    android:layout_marginLeft="40px"
+                    android:layout_marginBottom="300px"
+                    android:textColor="@color/colorPrimary"/>
+            <TextView
+                    android:text="Email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvTitleSignIn"
+                    android:layout_marginLeft="40px"
+                    android:id="@+id/tvUsername"
+                    android:textSize="60px"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimary"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:hint="Email"
+                    android:fontFamily="@font/montserrat"
+                    android:backgroundTint="@color/colorAccent"
+                    android:textColorHint="@color/color1"
+                    android:ems="10"
+                    android:layout_below="@id/tvUsername"
+                    android:layout_marginRight="40px"
+                    android:layout_marginLeft="40px"
+                    android:id="@+id/etUsername"
+                    android:textColorHighlight="@color/color1"
+                    android:importantForAutofill="no"/>
+            <TextView
+                    android:text="Kata Sandi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40px"
+                    android:layout_below="@id/etUsername"
+                    android:layout_marginLeft="40px"
+                    android:id="@+id/tvPassword"
+                    android:textSize="60px"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimary"/>
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:fontFamily="@font/montserrat"
+                    android:hint="Password"
+                    android:ems="10"
+                    android:textColorHint="@color/color1"
+                    android:backgroundTint="@color/colorAccent"
+                    android:layout_marginRight="40px"
+                    android:layout_below="@id/tvPassword"
+                    android:layout_marginLeft="40px"
+                    android:id="@+id/etPassword"
+                    android:importantForAutofill="no"/>
+
+            <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/etPassword"
+                    android:backgroundTint="@color/color1"
+                    android:text="Sign In"
+                    android:id="@+id/btSignIn"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginTop="40px"
+                    android:layout_marginStart="40px"
+                    android:layout_marginEnd="40px"
+                    android:layout_marginBottom="40px"/>
+
+            <TextView
+                    android:text="Kamu belum mempuyai akun?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/btSignIn"
+                    android:layout_marginLeft="40px"
+                    android:layout_marginBottom="40px"
+                    android:id="@+id/tvDont"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@android:color/darker_gray"/>
+
+            <TextView
+                    android:text="Sign up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/tvDont"
+                    android:layout_below="@id/btSignIn"
+                    android:layout_marginBottom="40px"
+                    android:layout_marginLeft="40px"
+                    android:id="@+id/tvSignUp"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimaryDark"/>
+
+            <TextView
+                    android:text="Lupa password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDont"
+                    android:layout_marginBottom="40px"
+                    android:layout_marginLeft="40px"
+                    android:id="@+id/tvForgotPassword"
+                    android:textSize="15sp"
+                    android:fontFamily="@font/montserrat"
+                    android:textColor="@color/colorPrimaryDark"/>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

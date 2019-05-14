@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ComingSoonActivity"
+        android:background="@drawable/gradient_home"
+        android:orientation="vertical">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_gravity="center" android:gravity="center" android:layout_centerInParent="true"
+                  android:id="@+id/textUnderConstruction">
+        <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:fontFamily="@font/montserrat"
+                  android:textSize="150px" android:text="Under\nConstruction" android:textAlignment="center"
+                  android:textColor="@color/colorPrimary"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.AppCompatImageView android:layout_width="150px" android:layout_height="150px"
+                                                  android:src="@drawable/ic_left_arrow1"
+                                                  android:id="@+id/arrowBackUnderConstruction"
+                                                  android:layout_gravity="center"
+                                                  android:layout_below="@id/textUnderConstruction"
+                                                  android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

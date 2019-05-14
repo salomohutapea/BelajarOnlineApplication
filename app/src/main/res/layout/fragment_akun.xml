@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent" android:layout_height="match_parent"
+             tools:context=".AkunFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+
+            <android.support.v7.widget.CardView android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_margin="40px"
+                                                app:cardCornerRadius="25px">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <LinearLayout android:layout_width="wrap_content"
+                                  android:layout_gravity="end"
+                                  android:visibility="gone"
+                                  android:orientation="horizontal"
+                                  android:id="@+id/progressBarAkun"
+                                  android:layout_height="wrap_content">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="Please Wait"/>
+
+                        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                     android:layout_margin="40px"/>
+                    </LinearLayout>
+
+                    <TextView android:layout_width="wrap_content" android:textSize="60px"
+                              android:layout_height="wrap_content" android:text="Detail Profil"
+                              android:layout_margin="40px" android:textColor="#000"
+                              android:fontFamily="@font/montserrat" android:layout_marginBottom="40px"/>
+                    <de.hdodenhof.circleimageview.CircleImageView android:layout_width="200px"
+                                                                  android:layout_height="200px"
+                                                                  android:src="@drawable/boy" app:civ_border_width="1px"
+                                                                  android:layout_marginLeft="40px"
+                                                                  app:civ_border_color="@android:color/holo_blue_light"
+                                                                  android:layout_marginBottom="30px"
+                                                                  android:id="@+id/akunProfilePicture"/>
+                    <TextView android:id="@+id/akunNama_textview" android:layout_width="wrap_content"
+                              android:layout_marginLeft="40px" android:layout_height="wrap_content"
+                              android:textColor="#000" android:fontFamily="@font/montserrat"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Nama"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:id="@+id/akunJenisKelamin_textview" android:layout_width="wrap_content"
+                              android:layout_marginLeft="40px" android:layout_height="wrap_content"
+                              android:textColor="#000"
+                              android:fontFamily="@font/montserrat"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Jenis Kelamin"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content"
+                              android:textColor="#000" android:fontFamily="@font/montserrat"
+                              android:id="@+id/akunAlamat_textview"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Alamat"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content"
+                              android:textColor="#000" android:fontFamily="@font/montserrat"
+                              android:id="@+id/akunProvinsi_textview"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Provinsi"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content"
+                              android:textColor="#000" android:fontFamily="@font/montserrat"
+                              android:id="@+id/akunKabupaten_textview"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Kabupaten/Kota"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content"
+                              android:textColor="#000" android:fontFamily="@font/montserrat"
+                              android:id="@+id/akunKelas_textview"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Kelas"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content"
+                              android:textColor="#000" android:fontFamily="@font/montserrat"
+                              android:id="@+id/akunSekolah_textview"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Sekolah"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:textColor="#000"
+                              android:fontFamily="@font/montserrat" android:id="@+id/akunNamaOrtu_textview"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Nama Orangtua"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:textColor="#000"
+                              android:fontFamily="@font/montserrat" android:id="@+id/noTelpOrtu_textview"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Nomor Telepon Orangtua"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:id="@+id/tvUbahDetailProfil" android:layout_width="match_parent"
+                              android:layout_height="wrap_content" android:padding="20px"
+                              android:text="UBAH DETAIL PROFIL" android:textColor="@color/colorPrimaryDark"
+                              android:textAlignment="center" android:fontFamily="@font/montserrat"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginHorizontal="40px"
+                                                app:cardCornerRadius="25px"
+                                                android:layout_marginTop="20px"
+                                                android:layout_marginBottom="200px">
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:orientation="vertical">
+                    <TextView android:layout_width="wrap_content" android:textSize="60px"
+                              android:layout_height="wrap_content" android:text="Detail Akun"
+                              android:layout_margin="40px" android:textColor="#000"
+                              android:fontFamily="@font/montserrat" android:layout_marginBottom="40px"/>
+                    <TextView android:id="@+id/akunNoHp_textview" android:layout_width="wrap_content"
+                              android:layout_marginLeft="40px" android:layout_height="wrap_content"
+                              android:textColor="#000"
+                              android:fontFamily="@font/montserrat"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Nomor Telepon"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:id="@+id/akunEmail_textview" android:layout_width="wrap_content"
+                              android:layout_marginLeft="40px" android:layout_height="wrap_content"
+                               android:textColor="#000"
+                              android:fontFamily="@font/montserrat"/>
+                    <TextView android:layout_width="wrap_content" android:layout_marginLeft="40px"
+                              android:layout_height="wrap_content" android:text="Email"
+                              android:fontFamily="@font/montserrat" android:textSize="30px"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+
+                    <TextView android:id="@+id/ubahNoHp_textview" android:fontFamily="@font/montserrat"
+                              android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:padding="20px" android:text="UBAH NOMOR HANDPHONE"
+                              android:textColor="@color/colorPrimaryDark" android:textAlignment="center"/>
+                    <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginVertical="20px"
+                            android:background="#CFCFCF"/>
+                    <TextView android:fontFamily="@font/montserrat" android:id="@+id/ubahSandi_textview"
+                              android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:padding="20px" android:text="UBAH KATA SANDI"
+                              android:textColor="@color/colorPrimaryDark" android:textAlignment="center"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

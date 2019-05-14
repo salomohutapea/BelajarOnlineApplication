@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="40px"
+        android:orientation="vertical"
+        android:background="@drawable/gradient_home"
+        tools:context=".VideoActivity">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView android:layout_width="70px" android:layout_height="70px"
+                                                      android:src="@drawable/ic_left_arrow1"
+                                                      android:id="@+id/arrowBackVideo"
+                                                      android:layout_gravity="center"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Trigonometri" android:textSize="60px" android:layout_marginLeft="40px"
+                      android:textColor="#FFF" android:id="@+id/titleMate"/>
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Sudut rangkap" android:id="@+id/titleKelas" android:textSize="30px"
+                      android:layout_marginLeft="40px"
+                      android:textColor="#FFF"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.CardView android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="20px"
+                                        android:layout_marginTop="40px">
+
+        <com.google.android.youtube.player.YouTubePlayerView android:layout_width="match_parent"
+                                                             android:id="@+id/youtubePlayer1"
+                                                             android:layout_height="wrap_content">
+        </com.google.android.youtube.player.YouTubePlayerView>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginTop="10px" app:cardCornerRadius="20px">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Live Chat"
+                      android:textColor="#000" android:paddingHorizontal="20px" android:paddingVertical="20px"
+                      android:textSize="15sp"/>
+            <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#CFCFCF"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+                      android:orientation="vertical">
+
+            <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+            </ScrollView>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:orientation="horizontal" android:layout_marginBottom="40px"
+                          android:layout_marginHorizontal="20px" android:layout_marginTop="40px">
+                <EditText android:layout_width="328dp" android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:layout_weight="1"/>
+                <ImageView android:layout_marginLeft="10px" android:layout_width="match_parent"
+                           android:layout_height="30dp" android:layout_gravity="center" android:layout_weight="10"
+                           android:src="@drawable/ic_send_black_24dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#044389 </color>
+    <color name="colorPrimaryDark">#3c91e6 </color>
+    <color name="colorAccent">#9ac4f8 </color>
+    <color name="color1">#E1F1FA</color>
+    <color name="color_preloader_start">#000000</color>
+    <color name="color_preloader_center">#000000</color>
+    <color name="color_preloader_end">#ff56a9c7</color>
+    <color name="color2">#f2f4ff</color>
+</resources>
