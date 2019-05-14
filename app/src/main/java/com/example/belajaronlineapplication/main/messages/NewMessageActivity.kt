@@ -20,7 +20,6 @@ import kotlinx.android.synthetic.main.activity_new_message.*
 import kotlinx.android.synthetic.main.user_row_new_message.view.*
 
 class NewMessageActivity : AppCompatActivity() {
-    val userListNewMessage: ArrayList<NewMessageUser> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,11 +33,14 @@ class NewMessageActivity : AppCompatActivity() {
         recyclerview_newMessage.layoutManager = LinearLayoutManager(this)
     }
 
+    companion object {
+        val USER_KEY = "USER_KEY"
+    }
+
     private fun FetchUser() {
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
-
             }
 
             override fun onDataChange(p0: DataSnapshot) {
@@ -51,10 +53,10 @@ class NewMessageActivity : AppCompatActivity() {
                         adapter.add(UserItem(userNewMessage))
                 }
                 adapter.setOnItemClickListener {item, view ->
+                    val userItem = item as UserItem
                     val intent = Intent(view.context, ChatLogActivity::class.java)
+                    intent.putExtra(USER_KEY, userItem.user)
                     startActivity(intent)
-
-                    finish()
                 }
                 recyclerview_newMessage.adapter = adapter
             }

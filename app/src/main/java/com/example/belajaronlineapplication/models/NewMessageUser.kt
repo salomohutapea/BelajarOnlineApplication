@@ -1,6 +1,9 @@
 package com.example.belajaronlineapplication.models
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 class NewMessageUser(
     val uid: String,
     val username: String,
@@ -20,6 +23,6 @@ class NewMessageUser(
     val namaOrtu: String,
     val noHPOrtu: String,
     val agreeIsChecked: String
-) {
+) :Parcelable {
     constructor() : this("", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "")
 }
