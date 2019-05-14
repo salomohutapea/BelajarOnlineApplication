@@ -7,16 +7,35 @@
                                              android:layout_height="match_parent"
                                              tools:context=".main.messages.ChatLogActivity"
                                              android:orientation="vertical">
-    <android.support.v7.widget.RecyclerView android:layout_gravity="1" android:layout_width="match_parent"
-                                            android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/relativelayout_chat_log" android:layout_width="match_parent" app:layout_constraintBottom_toTopOf="@id/recyclerview_chat_log" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:background="@color/colorPrimaryDark"
+                    android:padding="15dp" app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.v7.widget.AppCompatImageView android:layout_width="70px" android:layout_height="70px"
+                                                      android:src="@drawable/ic_left_arrow1"
+                                                      android:id="@+id/arrowBack"
+                                                      android:layout_gravity="center"
+                                                      android:layout_centerVertical="true"/>
+
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:layout_toEndOf="@id/arrowBack"
+                  android:layout_centerVertical="true"
+                  android:text="User" android:textSize="60px" android:layout_marginLeft="40px"
+                  android:textColor="#FFF" android:id="@+id/titleChat"/>
+
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView app:layout_constraintTop_toBottomOf="@+id/relativelayout_chat_log"
+                                            android:id="@+id/recyclerview_chat_log"
+                                            app:layoutManager="android.support.v7.widget.LinearLayoutManager"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content">
     </android.support.v7.widget.RecyclerView>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_weight="1"
                   app:layout_constraintBottom_toBottomOf="parent"
                   android:orientation="horizontal" android:layout_marginBottom="20px"
                   android:layout_marginHorizontal="20px" android:layout_marginTop="40px">
         <EditText android:layout_width="328dp" android:layout_height="wrap_content"
-                  android:layout_gravity="center"
-                  android:layout_weight="1"/>
+                  android:layout_gravity="center"/>
         <ImageView android:layout_marginStart="10px" android:layout_width="match_parent"
                    android:layout_height="30dp" android:id="@+id/send_button_chat_log"
                    android:layout_gravity="center" android:layout_weight="50"
