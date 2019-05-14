@@ -1,10 +1,11 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.signinup
 
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.Toast
+import com.example.belajaronlineapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_not_verified.*
 

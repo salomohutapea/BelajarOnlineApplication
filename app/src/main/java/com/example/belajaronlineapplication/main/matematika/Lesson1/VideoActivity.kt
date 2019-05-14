@@ -1,8 +1,10 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.main.matematika.Lesson1
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
+import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.signinup.SignInActivity
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
@@ -55,7 +57,6 @@ class VideoActivity : YouTubeBaseActivity() {
             ) {
                 youtubePlayer1?.loadVideo(VIDEO_ID)
             }
-
         }
     }
 }

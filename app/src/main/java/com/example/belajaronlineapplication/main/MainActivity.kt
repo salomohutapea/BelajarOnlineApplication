@@ -1,9 +1,10 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.main
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import com.example.belajaronlineapplication.R
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 

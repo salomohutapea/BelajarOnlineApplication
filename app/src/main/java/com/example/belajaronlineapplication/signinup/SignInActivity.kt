@@ -1,4 +1,4 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.signinup
 
 import android.content.Context
 import android.content.Intent
@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import com.example.belajaronlineapplication.main.MainActivity
+import com.example.belajaronlineapplication.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import jp.wasabeef.blurry.Blurry

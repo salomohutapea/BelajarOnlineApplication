@@ -1,7 +1,6 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.models
 
-
-class NewMessageUser(
+class User(
     val uid: String,
     val username: String,
     val profileImageUrl: String,

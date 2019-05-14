@@ -1,9 +1,12 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.main.matematika
 
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.belajaronlineapplication.main.matematika.Lesson1.LatihanSoalActivity
+import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.main.matematika.Lesson1.VideoActivity
 import kotlinx.android.synthetic.main.activity_matematika.*
 
 class MatematikaActivity : AppCompatActivity() {

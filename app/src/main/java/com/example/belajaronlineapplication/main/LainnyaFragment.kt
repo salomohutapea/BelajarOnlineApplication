@@ -1,4 +1,4 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.main
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.signinup.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_lainnya.*
 

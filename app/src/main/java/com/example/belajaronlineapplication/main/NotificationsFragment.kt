@@ -1,4 +1,4 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.main
 
 
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.belajaronlineapplication.R
 
 
 // TODO: Rename parameter arguments, choose names that match

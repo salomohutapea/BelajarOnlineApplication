@@ -1,4 +1,4 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.main
 
 
 import android.annotation.SuppressLint
@@ -8,9 +8,9 @@ import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
+import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError

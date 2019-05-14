@@ -1,8 +1,8 @@
-package com.example.belajaronlineapplication
+package com.example.belajaronlineapplication.main
 
-import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.belajaronlineapplication.R
 import kotlinx.android.synthetic.main.activity_coming_soon.*
 
 class ComingSoonActivity : AppCompatActivity() {
