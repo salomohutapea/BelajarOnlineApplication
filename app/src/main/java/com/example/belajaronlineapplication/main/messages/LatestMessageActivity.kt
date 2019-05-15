@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.example.belajaronlineapplication.R
-import com.example.belajaronlineapplication.models.NewMessageUser
+import com.example.belajaronlineapplication.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_latest_message.*
 class LatestMessageActivity : AppCompatActivity() {
 
     companion object {
-        var currentUser: NewMessageUser? = null
+        var currentUser: User? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +43,7 @@ class LatestMessageActivity : AppCompatActivity() {
             }
 
             override fun onDataChange(p0: DataSnapshot) {
-                currentUser = p0.getValue(NewMessageUser::class.java)
+                currentUser = p0.getValue(User::class.java)
                 Log.d("LatestMessages", "Current user is  ${currentUser?.profileImageUrl}")
             }
 

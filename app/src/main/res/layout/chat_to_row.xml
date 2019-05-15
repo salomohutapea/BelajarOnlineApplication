@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                              xmlns:app="http://schemas.android.com/apk/res-auto"
-                                             android:paddingBottom="15dp"
                                              android:layout_width="match_parent"
+                                             android:padding="10dp"
                                              android:layout_height="wrap_content">
     <de.hdodenhof.circleimageview.CircleImageView
-            app:layout_constraintLeft_toRightOf="@id/cardView"
+            app:layout_constraintLeft_toLeftOf="parent"
             app:civ_border_width="2dp"
             app:civ_border_color="@color/colorPrimaryDark"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" android:id="@+id/imageViewTo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/ic_account_circle_black_24dp"/>
-    <android.support.v7.widget.CardView android:id="@+id/cardView" app:cardCornerRadius="5dp" app:layout_constraintEnd_toStartOf="@id/imageViewTo"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_account_circle_black_24dp" app:layout_constraintStart_toStartOf="parent"/>
+    <android.support.v7.widget.CardView android:layout_marginStart="10dp" app:layout_constraintStart_toEndOf="@+id/imageViewTo" app:cardCornerRadius="5dp"
                                         android:layout_width="wrap_content" android:layout_height="wrap_content"
                                         app:layout_constraintTop_toTopOf="@id/imageViewTo">
         <LinearLayout android:padding="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content">
@@ -21,7 +20,7 @@
                       android:id="@+id/textViewTo"
                       android:text="This is my message that will wrap into multiple lines and keep on going"
                       android:textStyle="bold"
-                      app:layout_constraintTop_toTopOf="@+id/imageViewTo"/>
+                      app:layout_constraintTop_toTopOf="@+id/imageViewFrom"/>
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

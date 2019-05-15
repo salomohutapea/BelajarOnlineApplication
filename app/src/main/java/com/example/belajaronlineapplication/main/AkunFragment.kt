@@ -75,6 +75,7 @@ class AkunFragment : Fragment() {
                         akunKabupaten_textview.text = user.kabupatenKota
                         akunKelas_textview.text = user.tingkat
                         akunNamaOrtu_textview.text = user.namaOrtu
+                        akunNoTelpOrtu_textview.text = user.noHPOrtu
                         akunNama_textview.text = user.nama
                         akunNoHp_textview.text = user.noHP
                         akunProvinsi_textview.text = user.provinsi

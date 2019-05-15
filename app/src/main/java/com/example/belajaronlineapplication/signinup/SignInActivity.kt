@@ -26,7 +26,6 @@ class SignInActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_in)
-        lrProgressBar.visibility = View.GONE
 
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null)
@@ -64,11 +63,6 @@ class SignInActivity : AppCompatActivity() {
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
-    private fun hideKeyboard() {
-        val inputManager: InputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManager.hideSoftInputFromWindow(currentFocus.windowToken, InputMethodManager.SHOW_FORCED)
-    }
-
     private fun blurall() {
 
         if (blurred) {
@@ -94,12 +88,10 @@ class SignInActivity : AppCompatActivity() {
         email = etUsername.text.toString()
 
         if (email.isEmpty() || password.isEmpty()) {
-            lrProgressBar.visibility = View.GONE
             Toast.makeText(this, "Email dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
             return
         }
         blurall()
-        lrProgressBar.visibility = View.VISIBLE
         FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
@@ -112,7 +104,6 @@ class SignInActivity : AppCompatActivity() {
 
                 if (emailVerified == true) {
                     blurall()
-                    lrProgressBar.visibility = View.GONE
                     Log.d("Main", "Successfully login user with uid: ${it.result?.user?.uid}")
                     val mainIntent = Intent(
                         this@SignInActivity,
@@ -123,7 +114,6 @@ class SignInActivity : AppCompatActivity() {
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                 } else {
                     blurall()
-                    lrProgressBar.visibility = View.GONE
                     val notVerifiedIntent = Intent(
                         this@SignInActivity,
                         NotVerifiedActivity::class.java
@@ -134,13 +124,10 @@ class SignInActivity : AppCompatActivity() {
 
             }.addOnFailureListener {
                 blurall()
-                lrProgressBar.visibility = View.GONE
                 Log.d("SignInActivity", "Failed to login user: ${it.message}")
                 Toast.makeText(this, "Login gagal", Toast.LENGTH_SHORT).show()
             }
 
         Log.d("Login", "Attempt login with email/pw: $email/***")
-
-        lrProgressBar.visibility = View.GONE
     }
 }

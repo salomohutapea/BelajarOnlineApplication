@@ -22,7 +22,7 @@
 
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView android:id="@+id/recyclerview_newMessage" android:layout_margin="40px"
+    <android.support.v7.widget.RecyclerView android:id="@+id/recyclerview_newMessage"
                                             android:layout_width="match_parent"
                                             app:layoutManager="android.support.v7.widget.LinearLayoutManager"
                                             android:layout_height="match_parent">

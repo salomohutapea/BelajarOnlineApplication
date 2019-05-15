@@ -210,7 +210,7 @@ class SignUpActivity : AppCompatActivity() {
                         "Email verifikasi telah dikirim ke " + user.email!!,
                         Toast.LENGTH_SHORT
                     ).show()
-                     uploadImageToFirebaseStorage()
+                    uploadImageToFirebaseStorage()
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                 }
             }

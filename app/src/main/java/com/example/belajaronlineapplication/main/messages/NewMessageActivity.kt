@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
-import com.example.belajaronlineapplication.models.NewMessageUser
+import com.example.belajaronlineapplication.models.User
 import com.example.belajaronlineapplication.R
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -48,7 +48,7 @@ class NewMessageActivity : AppCompatActivity() {
                 val adapter = GroupAdapter<ViewHolder>()
                 p0.children.forEach {
                     Log.d("New Message", it.toString())
-                    val userNewMessage = it.getValue(NewMessageUser::class.java)
+                    val userNewMessage = it.getValue(User::class.java)
                     if (userNewMessage != null)
                         adapter.add(UserItem(userNewMessage))
                 }
@@ -65,7 +65,7 @@ class NewMessageActivity : AppCompatActivity() {
     }
 }
 
-class UserItem(val user: NewMessageUser) : Item<ViewHolder>() {
+class UserItem(val user: User) : Item<ViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.user_row_new_message
     }
