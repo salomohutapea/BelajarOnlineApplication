@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.main.messages.views.ChatFromItem
+import com.example.belajaronlineapplication.main.messages.views.ChatToItem
 import com.example.belajaronlineapplication.models.ChatMessage
 import com.example.belajaronlineapplication.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -56,7 +58,7 @@ class ChatLogActivity : AppCompatActivity() {
                 if (chatMessage != null) {
                     Log.d(TAG, chatMessage.text)
                     if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
-                        val currentUser = LatestMessageActivity.currentUser?: return
+                        val currentUser = LatestMessageActivity.currentUser ?: return
                         adapter.add(ChatFromItem(chatMessage.text, currentUser))
                     } else {
                         adapter.add(ChatToItem(chatMessage.text, toUser!!))
@@ -86,9 +88,9 @@ class ChatLogActivity : AppCompatActivity() {
         val text = edittext_chat_log.text.toString()
         val fromId = FirebaseAuth.getInstance().uid
         val user = intent.getParcelableExtra<User>(NewMessageActivity.USER_KEY)
-        val toId = user.uid
+        val toId = toUser!!.uid
         val ref = FirebaseDatabase.getInstance().getReference("/user-messages/$fromId/$toId").push()
-        val toRef = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId ").push()
+        val toRef = FirebaseDatabase.getInstance().getReference("/user-messages/$toId/$fromId").push()
         if (fromId == null) return
 
         val chatMessage = ChatMessage(ref.key!!, text, fromId, toId, System.currentTimeMillis() / 1000)
@@ -99,31 +101,10 @@ class ChatLogActivity : AppCompatActivity() {
                 recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
             }
         toRef.setValue(chatMessage)
-    }
-}
 
-class ChatFromItem(val text: String, val user: User) : Item<ViewHolder>() {
-    override fun getLayout(): Int {
-        return R.layout.chat_from_row
-    }
-
-    override fun bind(viewHolder: ViewHolder, position: Int) {
-        val uri = user.profileImageUrl
-        val targetImageView = viewHolder.itemView.imageViewFrom
-        Picasso.get().load(uri).into(targetImageView)
-        viewHolder.itemView.textViewFrom.text = text
-    }
-}
-
-class ChatToItem(val text: String, val user: User) : Item<ViewHolder>() {
-    override fun getLayout(): Int {
-        return R.layout.chat_to_row
-    }
-
-    override fun bind(viewHolder: ViewHolder, position: Int) {
-        val uri = user.profileImageUrl
-        val targetImageView = viewHolder.itemView.imageViewTo
-        Picasso.get().load(uri).into(targetImageView)
-        viewHolder.itemView.textViewTo.text = text
+        val latestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
+        latestMessageRef.setValue(chatMessage)
+        val latestMessageToRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")
+        latestMessageToRef.setValue(chatMessage)
     }
 }

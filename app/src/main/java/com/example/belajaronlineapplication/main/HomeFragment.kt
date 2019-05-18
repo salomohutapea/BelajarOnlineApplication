@@ -18,6 +18,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.pusher.pushnotifications.PushNotifications
 import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -40,6 +41,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+//        PushNotifications.start(requireContext(), "dde39824-fd22-4d6a-81f2-a81edba60b0c")
+//        PushNotifications.addDeviceInterest("hello")
         fetchUsers()
         lrMatematika.setOnClickListener {
             val matematikaIntent = Intent(requireActivity(), MatematikaActivity::class.java)

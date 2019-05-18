@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import com.example.belajaronlineapplication.R
 import com.google.firebase.messaging.FirebaseMessaging
+import com.pusher.pushnotifications.PushNotifications
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
