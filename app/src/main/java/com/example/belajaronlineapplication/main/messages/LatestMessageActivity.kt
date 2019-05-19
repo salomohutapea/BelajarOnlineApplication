@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DividerItemDecoration
 import android.util.Log
 import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.main.messages.NewMessageActivity.Companion.USER_KEY
+import com.example.belajaronlineapplication.main.messages.views.LatestMessageRow
 import com.example.belajaronlineapplication.models.ChatMessage
 import com.example.belajaronlineapplication.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -22,12 +24,22 @@ class LatestMessageActivity : AppCompatActivity() {
 
     companion object {
         var currentUser: User? = null
+        const val TAG = "LatestMessages"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latest_message)
         recyclerViewLatestMessage.adapter = adapter
+        // set item click on adapter
+        adapter.setOnItemClickListener{item, view ->
+            Log.d(TAG, "123")
+            val intent = Intent(this, ChatLogActivity::class.java)
+            val row = item as LatestMessageRow
+            intent.putExtra(USER_KEY, row.chatPartnerUser)
+
+            startActivity(intent)
+        }
 //        recyclerViewLatestMessage.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         listenForLatestMessage()
         fetchCurrentUser()
@@ -38,38 +50,6 @@ class LatestMessageActivity : AppCompatActivity() {
 
         arrowBack.setOnClickListener {
             finish()
-        }
-    }
-
-    class LatestMessageRow(val chatMessage: ChatMessage) : Item<ViewHolder>() {
-        override fun getLayout(): Int {
-            return R.layout.latest_message_row
-        }
-
-        override fun bind(viewHolder: ViewHolder, position: Int) {
-            viewHolder.itemView.textViewMessageLatestMessage.text = chatMessage.text
-            val chatPartnerId: String
-            if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
-                chatPartnerId = chatMessage.toId
-            } else {
-                chatPartnerId = chatMessage.fromId
-            }
-
-            val ref = FirebaseDatabase.getInstance().getReference("/users/$chatPartnerId")
-            ref.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onCancelled(p0: DatabaseError) {
-                    TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-                }
-
-                override fun onDataChange(p0: DataSnapshot) {
-                    val user = p0.getValue(User::class.java)
-                    viewHolder.itemView.textViewNameLatestMessage.text = user?.nama
-
-                    val targetImageView = viewHolder.itemView.imageViewLatestMessage
-                    Picasso.get().load(user?.profileImageUrl).into(targetImageView)
-                }
-
-            })
         }
     }
 
@@ -97,6 +77,7 @@ class LatestMessageActivity : AppCompatActivity() {
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
                 val chatMessage = p0.getValue(ChatMessage::class.java) ?: return
                 adapter.add(LatestMessageRow(chatMessage))
+                refreshRecyclerViewMessages()
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {

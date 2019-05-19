@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.signinup.SignInActivity
 import com.google.firebase.messaging.FirebaseMessaging
 import com.pusher.pushnotifications.PushNotifications
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,10 +20,6 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.navigation_akun -> {
                 replaceFragment(AkunFragment())
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.navigation_notifikasi -> {
-                replaceFragment((NotificationsFragment()))
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_lainnya -> {

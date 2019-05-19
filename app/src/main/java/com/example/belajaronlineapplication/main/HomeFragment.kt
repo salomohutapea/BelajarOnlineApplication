@@ -9,16 +9,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.belajaronlineapplication.main.messages.LatestMessageActivity
-import com.example.belajaronlineapplication.main.matematika.MatematikaActivity
 import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.main.matematika.MatematikaActivity
+import com.example.belajaronlineapplication.main.messages.LatestMessageActivity
 import com.example.belajaronlineapplication.models.User
+import com.example.belajaronlineapplication.signinup.SignInActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.pusher.pushnotifications.PushNotifications
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
 
 // TODO: Rename parameter arguments, choose names that match
@@ -41,8 +42,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        PushNotifications.start(requireContext(), "dde39824-fd22-4d6a-81f2-a81edba60b0c")
-//        PushNotifications.addDeviceInterest("hello")
         fetchUsers()
         lrMatematika.setOnClickListener {
             val matematikaIntent = Intent(requireActivity(), MatematikaActivity::class.java)
@@ -73,8 +72,8 @@ class HomeFragment : Fragment() {
             requireActivity().startActivity(profileIntent)
         }
         btChat.setOnClickListener {
-            val raporIntent = Intent(requireActivity(), LatestMessageActivity::class.java)
-            requireActivity().startActivity(raporIntent)
+            val intent = Intent(requireActivity(), LatestMessageActivity::class.java)
+            requireActivity().startActivity(intent)
         }
     }
 
@@ -91,10 +90,12 @@ class HomeFragment : Fragment() {
 
                     if (user != null && uid == user.uid) {
                         textGreetings = "Hai " + user.nama + ","
+                        Picasso.get().load(user.profileImageUrl).into(profile_button)
                         greetings_textview.text = textGreetings
                     }
                 }
             }
+
             override fun onCancelled(p0: DatabaseError) {
             }
         }

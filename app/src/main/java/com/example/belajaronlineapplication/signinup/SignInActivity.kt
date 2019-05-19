@@ -11,8 +11,12 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import com.example.belajaronlineapplication.main.MainActivity
 import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.models.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
@@ -62,6 +66,20 @@ class SignInActivity : AppCompatActivity() {
         startActivity(mainIntent)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
+
+//    intent.putExtra("nama", user.nama)
+//    intent.putExtra("alamat", user.alamat)
+//    intent.putExtra("email", user.email)
+//    intent.putExtra("jenisKelamin", user.jenisKelamin)
+//    intent.putExtra("jurusan", user.jurusan)
+//    intent.putExtra("kabupatenKota", user.kabupatenKota)
+//    intent.putExtra("kurikulum", user.kurikulum)
+//    intent.putExtra("namaOrtu", user.namaOrtu)
+//    intent.putExtra("noHP", user.noHP)
+//    intent.putExtra("noHPOrtu", user.noHPOrtu)
+//    intent.putExtra("profileImageUrl", user.profileImageUrl)
+//    intent.putExtra("provinsi", user.provinsi)
+//    intent.putExtra("sekolah", user.sekolah)
 
     private fun blurall() {
 

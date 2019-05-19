@@ -16,6 +16,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_akun.*
 
 
@@ -69,6 +70,7 @@ class AkunFragment : Fragment() {
                     val user = it.getValue(User::class.java)
 
                     if (user != null && uid == user.uid) {
+                        Picasso.get().load(user.profileImageUrl).into(akunProfilePicture)
                         akunAlamat_textview.text = user.alamat
                         akunEmail_textview.text = user.email
                         akunJenisKelamin_textview.text = user.jenisKelamin
