@@ -6,6 +6,7 @@
 
     <application
             android:allowBackup="true"
+            android:largeHeap="true"
             android:icon="@drawable/logo_smarusquare"
             android:label="Smart U!"
             android:roundIcon="@mipmap/ic_launcher_round"
