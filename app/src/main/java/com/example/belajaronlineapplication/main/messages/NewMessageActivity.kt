@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import com.example.belajaronlineapplication.models.User
 import com.example.belajaronlineapplication.R
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -49,8 +50,12 @@ class NewMessageActivity : AppCompatActivity() {
                 p0.children.forEach {
                     Log.d("New Message", it.toString())
                     val userNewMessage = it.getValue(User::class.java)
-                    if (userNewMessage != null)
-                        adapter.add(UserItem(userNewMessage))
+                    if (userNewMessage != null) {
+                        if (userNewMessage.uid != FirebaseAuth.getInstance().uid) {
+                            if(userNewMessage.password == "tutormat" || userNewMessage.password == "tutorfis" || userNewMessage.password == "tutoring" || userNewMessage.password == "tutorbio" || userNewMessage.password == "tutorind" || userNewMessage.password == "tutorkim")
+                                adapter.add(UserItem(userNewMessage))
+                        }
+                    }
                 }
                 adapter.setOnItemClickListener {item, view ->
                     val userItem = item as UserItem
@@ -60,7 +65,6 @@ class NewMessageActivity : AppCompatActivity() {
                 }
                 recyclerview_newMessage.adapter = adapter
             }
-
         })
     }
 }
@@ -74,5 +78,4 @@ class UserItem(val user: User) : Item<ViewHolder>() {
         viewHolder.itemView.textView.text = user.nama
         Picasso.get().load(user.profileImageUrl).into(viewHolder.itemView.imageView)
     }
-
 }

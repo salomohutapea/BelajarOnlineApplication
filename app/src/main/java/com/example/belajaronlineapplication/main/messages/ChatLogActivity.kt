@@ -13,13 +13,9 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
-import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_chat_log.*
-import kotlinx.android.synthetic.main.chat_from_row.view.*
-import kotlinx.android.synthetic.main.chat_to_row.view.*
 
 class ChatLogActivity : AppCompatActivity() {
 
@@ -44,7 +40,10 @@ class ChatLogActivity : AppCompatActivity() {
 
         send_button_chat_log.setOnClickListener {
             Log.d(TAG, "Attempt to send message.....")
-            performSendMessage()
+            if(edittext_chat_log.text.toString().isEmpty())
+
+            else
+                performSendMessage()
         }
     }
 
