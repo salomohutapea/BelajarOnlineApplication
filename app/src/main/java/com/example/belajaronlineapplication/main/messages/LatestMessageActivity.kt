@@ -4,7 +4,6 @@ package com.example.belajaronlineapplication.main.messages
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.DividerItemDecoration
 import android.util.Log
 import com.example.belajaronlineapplication.R
 import com.example.belajaronlineapplication.main.messages.NewMessageActivity.Companion.USER_KEY
@@ -13,12 +12,9 @@ import com.example.belajaronlineapplication.models.ChatMessage
 import com.example.belajaronlineapplication.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
-import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
-import com.xwray.groupie.Item
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_latest_message.*
-import kotlinx.android.synthetic.main.latest_message_row.view.*
 
 class LatestMessageActivity : AppCompatActivity() {
 
@@ -32,7 +28,7 @@ class LatestMessageActivity : AppCompatActivity() {
         setContentView(R.layout.activity_latest_message)
         recyclerViewLatestMessage.adapter = adapter
         // set item click on adapter
-        adapter.setOnItemClickListener{item, view ->
+        adapter.setOnItemClickListener { item, view ->
             Log.d(TAG, "123")
             val intent = Intent(this, ChatLogActivity::class.java)
             val row = item as LatestMessageRow
@@ -40,7 +36,6 @@ class LatestMessageActivity : AppCompatActivity() {
 
             startActivity(intent)
         }
-//        recyclerViewLatestMessage.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         listenForLatestMessage()
         fetchCurrentUser()
         btNewMessage.setOnClickListener {

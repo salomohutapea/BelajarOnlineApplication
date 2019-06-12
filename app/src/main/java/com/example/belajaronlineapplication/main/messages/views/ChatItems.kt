@@ -8,7 +8,7 @@ import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.chat_from_row.view.*
 import kotlinx.android.synthetic.main.chat_to_row.view.*
 
-
+//Class ini berguna untuk menampilkan chat dari lawan bicara
 class ChatFromItem(val text: String, val user: User) : Item<ViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.chat_from_row
@@ -21,7 +21,7 @@ class ChatFromItem(val text: String, val user: User) : Item<ViewHolder>() {
         viewHolder.itemView.textViewFrom.text = text
     }
 }
-
+//Class ini berguna untuk menampilkan chat yang kita send
 class ChatToItem(val text: String, val user: User) : Item<ViewHolder>() {
     override fun getLayout(): Int {
         return R.layout.chat_to_row

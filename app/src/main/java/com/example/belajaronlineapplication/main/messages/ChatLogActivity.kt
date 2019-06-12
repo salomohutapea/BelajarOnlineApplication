@@ -40,13 +40,13 @@ class ChatLogActivity : AppCompatActivity() {
 
         send_button_chat_log.setOnClickListener {
             Log.d(TAG, "Attempt to send message.....")
-            if(edittext_chat_log.text.toString().isEmpty())
-
+            if (edittext_chat_log.text.toString().isEmpty())
             else
                 performSendMessage()
         }
     }
-
+    // Method ini berfungsi untuk menampilkan setiap pesan yang dikirim kedua user yang sedang chat.
+    // Menggunakan onChildAdded danaddChildEventListener agar selalu auto update bila ada perubahan di database.
     private fun listenForMessages() {
         val fromId = FirebaseAuth.getInstance().uid
         val toId = toUser?.uid
@@ -63,7 +63,6 @@ class ChatLogActivity : AppCompatActivity() {
                         adapter.add(ChatToItem(chatMessage.text, toUser!!))
                     }
                 }
-
                 recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
             }
 
@@ -84,7 +83,8 @@ class ChatLogActivity : AppCompatActivity() {
             }
         })
     }
-
+    //Algoritma pengiriman pesan disini pertama kali pesan di simpan di database menggunakan toId dan fromId.
+    //Sehingga database yang terbuat akan double, yang saling berkebalikan agar penempatan pesan lebih terstruktur dan database mudah dipahami.
     private fun performSendMessage() {
         val text = edittext_chat_log.text.toString()
         val fromId = FirebaseAuth.getInstance().uid
@@ -102,7 +102,6 @@ class ChatLogActivity : AppCompatActivity() {
                 recyclerview_chat_log.scrollToPosition(adapter.itemCount - 1)
             }
         toRef.setValue(chatMessage)
-
         val latestMessageRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId/$toId")
         latestMessageRef.setValue(chatMessage)
         val latestMessageToRef = FirebaseDatabase.getInstance().getReference("/latest-messages/$toId/$fromId")

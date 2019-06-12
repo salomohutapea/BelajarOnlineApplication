@@ -12,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_video.*
 
 class VideoActivity : YouTubeBaseActivity() {
-
+    //Data untuk API youtube
     companion object {
         val VIDEO_ID: String = "P3FEIS4Yvr0"
         val YOUTUBE_API_KEY: String = "AIzaSyCZl_NLt-sLAqSvzmXn6BnL-iLmbd1fVfk"
@@ -25,16 +25,14 @@ class VideoActivity : YouTubeBaseActivity() {
         setContentView(R.layout.activity_video)
 
         VerifyUserIsLoggedIn()
-
         initUI()
 
         youtubePlayer1.initialize(YOUTUBE_API_KEY, youtubePlayerInit)
-
         arrowBackVideo.setOnClickListener {
             finish()
         }
     }
-
+    //Method ini mengecek apakah user telah login
     private fun VerifyUserIsLoggedIn() {
         val uid = FirebaseAuth.getInstance().uid
         if (uid == null) {
@@ -43,7 +41,7 @@ class VideoActivity : YouTubeBaseActivity() {
             startActivity(intent)
         }
     }
-
+    //Method ini untuk menampilkan video youtube
     private fun initUI() {
         youtubePlayerInit = object : YouTubePlayer.OnInitializedListener {
             override fun onInitializationFailure(p0: YouTubePlayer.Provider?, p1: YouTubeInitializationResult?) {

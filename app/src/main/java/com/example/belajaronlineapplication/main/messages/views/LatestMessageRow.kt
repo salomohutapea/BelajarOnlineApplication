@@ -21,13 +21,13 @@ class LatestMessageRow(val chatMessage: ChatMessage) : Item<ViewHolder>() {
 
     override fun bind(viewHolder: ViewHolder, position: Int) {
         viewHolder.itemView.textViewMessageLatestMessage.text = chatMessage.text
-        val chatPartnerId: String
-        if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
-            chatPartnerId = chatMessage.toId
+        //Untuk mengecek uid user yang terakhir mengirimkan pesan
+        val chatPartnerId: String = if (chatMessage.fromId == FirebaseAuth.getInstance().uid) {
+            chatMessage.toId
         } else {
-            chatPartnerId = chatMessage.fromId
+            chatMessage.fromId
         }
-
+        //Mengambil pesan dari firebase dan menampilkan pesan terakhir pada chat tersebut
         val ref = FirebaseDatabase.getInstance().getReference("/users/$chatPartnerId")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
@@ -37,7 +37,6 @@ class LatestMessageRow(val chatMessage: ChatMessage) : Item<ViewHolder>() {
             override fun onDataChange(p0: DataSnapshot) {
                 chatPartnerUser = p0.getValue(User::class.java)
                 viewHolder.itemView.textViewNameLatestMessage.text = chatPartnerUser?.nama
-
                 val targetImageView = viewHolder.itemView.imageViewLatestMessage
                 Picasso.get().load(chatPartnerUser?.profileImageUrl).into(targetImageView)
             }

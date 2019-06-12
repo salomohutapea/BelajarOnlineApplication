@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.example.belajaronlineapplication.R
 import kotlinx.android.synthetic.main.activity_latihan_soal.*
 
+//Activity ini hanya menampilkan latihan soal, dan hanya terdapat 1 button back yang diklik
 class LatihanSoalActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
