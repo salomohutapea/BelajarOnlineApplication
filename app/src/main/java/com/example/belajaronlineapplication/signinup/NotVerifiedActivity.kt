@@ -20,6 +20,7 @@ class NotVerifiedActivity : AppCompatActivity() {
         }
     }
 
+    //Mengirimkan email verifikasi kepada alamat email yang sudah di inputkan
     private fun sendEmailVerification() {
         val user = FirebaseAuth.getInstance().currentUser
         user!!.sendEmailVerification()
@@ -31,13 +32,15 @@ class NotVerifiedActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                     FirebaseAuth.getInstance().signOut()
+
                     val signInIntent = Intent(
                         this@NotVerifiedActivity,
                         SignInActivity::class.java
                     )
                     startActivity(signInIntent)
                     overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-                } else {
+                }
+                else {
                     Log.d("SignInActivity", "sendEmailVerification failed!", task.exception)
                     Toast.makeText(applicationContext, "Gagal mengirimkan email verifikasi.", Toast.LENGTH_SHORT).show()
                 }

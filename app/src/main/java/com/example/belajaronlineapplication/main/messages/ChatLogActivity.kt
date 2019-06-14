@@ -23,14 +23,16 @@ class ChatLogActivity : AppCompatActivity() {
         val TAG = "ChatLog"
     }
 
+
     val adapter = GroupAdapter<ViewHolder>()
     var toUser: User? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_log)
         recyclerview_chat_log.adapter = adapter
-        toUser = intent.getParcelableExtra(NewMessageActivity.USER_KEY)
+        toUser = intent.getParcelableExtra(NewMessageActivity.USER_KEY) //untuk mentransfer user key dari new message activity ke activity chat log
         titleChatLog.text = toUser?.nama
 
         listenForMessages()
@@ -46,7 +48,7 @@ class ChatLogActivity : AppCompatActivity() {
         }
     }
     // Method ini berfungsi untuk menampilkan setiap pesan yang dikirim kedua user yang sedang chat.
-    // Menggunakan onChildAdded danaddChildEventListener agar selalu auto update bila ada perubahan di database.
+    // Menggunakan onChildAdded dan addChildEventListener agar selalu auto update bila ada perubahan di database.
     private fun listenForMessages() {
         val fromId = FirebaseAuth.getInstance().uid
         val toId = toUser?.uid

@@ -17,20 +17,29 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
         btReset.setOnClickListener {
 
+            //Jika button reset di click maka akan mengirimkan email reset password ke email yang sudah di input user sebelumnya.
             val email = etEmailForgot.text.toString()
+
+            //untuk mengecek apakah edit text kosong atau tidak
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(applicationContext, "Masukkan email anda", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
+
+                //ketika email sudah terisi ...
             } else {
                 FirebaseAuth.getInstance().sendPasswordResetEmail(email)
                     .addOnCompleteListener { task ->
+
+                        //Jika email reset password telah terkirim...
                         if (task.isSuccessful) {
                             Toast.makeText(
                                 this@ForgotPasswordActivity,
                                 "Link reset password sudah dikirimkan ke email anda!",
                                 Toast.LENGTH_SHORT
                             ).show()
-                        } else {
+                        }
+                        //Jika gagal mengirimkan email reset password, atau user tidak terdapat di firebase authentication
+                        else {
                             Toast.makeText(
                                 this@ForgotPasswordActivity,
                                 "Gagal mengirimkan email reset password!",
@@ -41,6 +50,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
             }
 
         }
+        // untuk kembali ke signIn activity
         tvSignInForgot.setOnClickListener {
             val signInIntent = Intent(
                 this@ForgotPasswordActivity,

@@ -7,6 +7,7 @@ import kotlinx.android.synthetic.main.activity_coming_soon.*
 
 class ComingSoonActivity : AppCompatActivity() {
 
+    //Activity untuk under construction buat activity yang belum tersedia
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coming_soon)

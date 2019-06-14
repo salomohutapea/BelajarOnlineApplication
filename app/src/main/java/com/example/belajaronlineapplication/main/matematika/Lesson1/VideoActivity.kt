@@ -1,21 +1,18 @@
 package com.example.belajaronlineapplication.main.matematika.Lesson1
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import com.example.belajaronlineapplication.R
-import com.example.belajaronlineapplication.signinup.SignInActivity
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_video.*
 
 class VideoActivity : YouTubeBaseActivity() {
     //Data untuk API youtube
     companion object {
-        val VIDEO_ID: String = "P3FEIS4Yvr0"
-        val YOUTUBE_API_KEY: String = "AIzaSyCZl_NLt-sLAqSvzmXn6BnL-iLmbd1fVfk"
+        val VIDEO_ID: String = "P3FEIS4Yvr0" //ID video youtube berasal dari : contoh www.youtu.be/P3FEIS4Yvr0
+        val YOUTUBE_API_KEY: String = "AIzaSyCZl_NLt-sLAqSvzmXn6BnL-iLmbd1fVfk" //API KEY Youtube
     }
 
     lateinit var youtubePlayerInit: YouTubePlayer.OnInitializedListener
@@ -24,23 +21,15 @@ class VideoActivity : YouTubeBaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_video)
 
-        VerifyUserIsLoggedIn()
         initUI()
 
         youtubePlayer1.initialize(YOUTUBE_API_KEY, youtubePlayerInit)
+        // Tombol back untuk kembali ke activity sebelumnya
         arrowBackVideo.setOnClickListener {
             finish()
         }
     }
-    //Method ini mengecek apakah user telah login
-    private fun VerifyUserIsLoggedIn() {
-        val uid = FirebaseAuth.getInstance().uid
-        if (uid == null) {
-            val intent = Intent(this, SignInActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
-            startActivity(intent)
-        }
-    }
+
     //Method ini untuk menampilkan video youtube
     private fun initUI() {
         youtubePlayerInit = object : YouTubePlayer.OnInitializedListener {

@@ -1,17 +1,16 @@
 package com.example.belajaronlineapplication.main
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
+import android.support.v7.app.AppCompatActivity
 import com.example.belajaronlineapplication.R
-import com.example.belajaronlineapplication.signinup.SignInActivity
 import com.google.firebase.messaging.FirebaseMessaging
-import com.pusher.pushnotifications.PushNotifications
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    // Berisi 3 fragment yaitu Home Fragment, Akun fragment, dan Lainnya Fragment
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
@@ -29,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         }
         false
     }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

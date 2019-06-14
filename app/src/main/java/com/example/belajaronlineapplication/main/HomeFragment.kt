@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import com.example.belajaronlineapplication.R
 import com.example.belajaronlineapplication.main.matematika.MatematikaActivity
 import com.example.belajaronlineapplication.main.messages.LatestMessageActivity
@@ -31,6 +32,7 @@ private const val ARG_PARAM2 = "param2"
  * A simple [Fragment] subclass.
  *
  */
+
 class HomeFragment : Fragment() {
     lateinit var textGreetings: String
 
@@ -40,9 +42,10 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View = inflater.inflate(R.layout.fragment_home, container, false)
 
+    //Untuk menge-link semua activity ke activity lainnya
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        fetchUsers()
+        checkUser()
         lrMatematika.setOnClickListener {
             val matematikaIntent = Intent(requireActivity(), MatematikaActivity::class.java)
             requireActivity().startActivity(matematikaIntent)
@@ -75,11 +78,32 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireActivity(), LatestMessageActivity::class.java)
             requireActivity().startActivity(intent)
         }
+        //fungsi refresh main menu
+        my_swipeRefresh_Layout.setOnRefreshListener {
+            checkUser()
+            fetchUsersComplete()
+        }
     }
 
-    private fun fetchUsers() {
+    private fun fetchUsersComplete() {
+        my_swipeRefresh_Layout.isRefreshing = false
+    }
+
+    //Method ini mengecek apakah user telah login
+    private fun checkUser() {
+        val uid = FirebaseAuth.getInstance().uid
+        if (uid == null) {
+            val intent = Intent(requireActivity(), SignInActivity::class.java)
+            requireActivity().startActivity(intent)
+        }
+        fetchUser()
+    }
+
+    //Untuk mengambil data user yang sudah tersimpan di firebase database
+    private fun fetchUser() {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
         val ref = FirebaseDatabase.getInstance().getReference("/users")
+
 
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             @SuppressLint("SetTextI18n")
@@ -90,6 +114,7 @@ class HomeFragment : Fragment() {
 
                     if (user != null && uid == user.uid) {
                         textGreetings = "Hai " + user.nama + ","
+                        // Mengunakan library pihak ke 3 untuk nge mendapatkan gambar dari profile image url user.
                         Picasso.get().load(user.profileImageUrl).into(profile_button)
                         greetings_textview.text = textGreetings
                     }

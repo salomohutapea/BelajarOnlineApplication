@@ -7,6 +7,20 @@
         android:layout_height="match_parent"
         tools:context=".signinup.SignInActivity"
         android:background="@android:color/white">
+    <android.support.v7.widget.CardView android:layout_width="wrap_content"
+                                        android:id="@+id/cardProgressBarSignIn"
+                                        android:visibility="gone"
+                                        android:layout_centerInParent="true"
+                                        android:layout_height="wrap_content">
+        <LinearLayout android:padding="10dp" android:layout_width="wrap_content"
+                      android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:text="Please Wait" android:textSize="25sp" android:layout_marginRight="10dp"
+                      android:layout_gravity="center"/>
+            <ProgressBar android:layout_width="80dp" android:layout_height="80dp"
+            />
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
     <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content">
         <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
             <TextView
@@ -14,7 +28,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvTitleSignIn"
-                    android:textSize="60px"
+                    android:textSize="100px"
                     android:fontFamily="@font/montserrat"
                     android:layout_marginTop="200px"
                     android:layout_marginLeft="40px"

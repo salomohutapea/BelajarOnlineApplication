@@ -32,12 +32,15 @@ class LainnyaFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //Menge-link tombol Log Out ke signUp activity
         rlLogOut.setOnClickListener {
             FirebaseAuth.getInstance().signOut()
             val signInIntent = Intent(requireActivity(), SignInActivity::class.java)
             requireActivity().startActivity(signInIntent)
         }
 
+        // Menge-link activity ke under Construction activity
         rlHubungi.setOnClickListener {
             val hubungiIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
             requireActivity().startActivity(hubungiIntent)

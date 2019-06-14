@@ -1,14 +1,18 @@
 package com.example.belajaronlineapplication.signinup
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
@@ -26,6 +30,7 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
+        //Jika button select profile di click maka, akan muncul pilihan foto dari galery
         selectPhotoButton.setOnClickListener {
             Log.d("RegisterActivity", "Try to show photo selector")
 
@@ -34,6 +39,7 @@ class SignUpActivity : AppCompatActivity() {
             startActivityForResult(intentPhotoSelector, 0)
         }
 
+        //Jika tvSignIn di click, maka SignInActivity akan terbuka
         tvSignIn.setOnClickListener {
             val signInIntent = Intent(
                 this@SignUpActivity,
@@ -43,10 +49,12 @@ class SignUpActivity : AppCompatActivity() {
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
 
+        //Jika button signup di click maka method perform register akan dijalankan
         btSignUp.setOnClickListener {
             performRegister()
         }
 
+        //untuk memberi 3 pilihan kategori tingkat di spinner
         val grades = arrayOf("-", "10 SMA", "11 SMA", "12 SMA")
         val adapterGrades = ArrayAdapter(
             this, // Context
@@ -57,15 +65,15 @@ class SignUpActivity : AppCompatActivity() {
         spinnerGrade.adapter = adapterGrades
         spinnerGrade.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                // Display the selected item text on text view
+                // Menampilkan selected item di text view
                 tvSpinnerGrade.text = "${parent.getItemAtPosition(position).toString()}"
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Another interface callback
             }
         }
 
+        //Untuk memberi 2 pilihan kategori jurusan di spinner
         val major = arrayOf("-", "IPA", "IPS")
         val adapterMajor = ArrayAdapter(
             this, // Context
@@ -76,15 +84,16 @@ class SignUpActivity : AppCompatActivity() {
         spinnerMajor.adapter = adapterMajor
         spinnerMajor.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                // Display the selected item text on text view
+                // Menampilkan selected item di spinner major
                 tvSpinnerMajor.text = "${parent.getItemAtPosition(position).toString()}"
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
-                // Another interface callback
+
             }
         }
 
+        // Untuk menampilkan 3 pilihan kurikulum di spinner
         val curriculum = arrayOf("-", "K13 Revisi", "K13", "KTSP")
         val adapterKurikulum = ArrayAdapter(
             this, // Context
@@ -104,6 +113,7 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
+        //Untuk menampilkan 2 pilihan gender
         val gender = arrayOf("-", "Laki - Laki", "Perempuan")
         val adapterJenisKelamin = ArrayAdapter(
             this, // Context
@@ -126,6 +136,7 @@ class SignUpActivity : AppCompatActivity() {
 
     var selectedPhotoUri: Uri? = null
 
+    //Method untuk mengupload foto
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -143,6 +154,21 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
+    //Untuk menyembunyikan keyboard
+    private fun Fragment.hideKeyboard() {
+        view?.let { activity?.hideKeyboard(it) }
+    }
+
+    private fun Activity.hideKeyboard() {
+        hideKeyboard(if (currentFocus == null) View(this) else currentFocus)
+    }
+
+    private fun Context.hideKeyboard(view: View) {
+        val inputMethodManager = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    //fungsi untuk register
     private fun performRegister() {
         val password = etPasswordSignUp.text.toString()
         val email = etEmail.text.toString()
@@ -178,16 +204,36 @@ class SignUpActivity : AppCompatActivity() {
         Log.d("SignUpActivity", "No hp orangtua adalah $noHpOrtu")
         Log.d("SignUpActivity", "Agree  $agreeIsChecked")
 
+        //Jika belum ada foto yang dipilih, maka akan muncul pesan
+        if (selectedPhotoUri == null) {
+            Toast.makeText(
+                applicationContext,
+                "Please upload your photo",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+        //Untuk Mengecek apakah email, password dan nama tidak kosong.
         if (email.isEmpty() || password.isEmpty() || nama.isEmpty()) {
             Toast.makeText(this, "Masukkan email, password, dan nama", Toast.LENGTH_SHORT).show()
             return
         }
 
+        //Untuk mengecek apakah agreeCheckBox sudah di check
         if (!agreeCheckBox.isChecked) {
             Toast.makeText(this, "Please agree to our terms and conditions", Toast.LENGTH_SHORT).show()
             return
         }
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+            WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE
+        )
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+        hideKeyboard()
+        cardProgressBarSignUp.visibility = View.VISIBLE
 
+        //Untuk membuat akun aplikasi dari user berdasarkan email dan password yang sudah di input
+        //menggunakan firebase authentication
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (!it.isSuccessful) return@addOnCompleteListener
@@ -196,10 +242,13 @@ class SignUpActivity : AppCompatActivity() {
                 sendEmailVerification()
             }.addOnFailureListener {
                 Log.d("SignUpActivity", "Failed to create user: ${it.message}")
+                cardProgressBarSignUp.visibility = View.GONE
+                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 Toast.makeText(this, "Failed to create user: ${it.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
+    //untuk mengirimkan email verifikasi ke email user yang sudah diinputkan
     private fun sendEmailVerification() {
         val user = FirebaseAuth.getInstance().currentUser
         user!!.sendEmailVerification()
@@ -215,36 +264,35 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener(this) { task ->
+                cardProgressBarSignUp.visibility = View.GONE
+                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 Toast.makeText(applicationContext, "Gagal mengirimkan email verifikasi.", Toast.LENGTH_SHORT).show()
             }
     }
 
+    //Untuk mengupload menyimpan foto pilihan user ke firebase storage
     private fun uploadImageToFirebaseStorage() {
-        if (selectedPhotoUri == null) {
-            Toast.makeText(
-                applicationContext,
-                "Please upload your photo",
-                Toast.LENGTH_SHORT
-            ).show()
-        } else if (selectedPhotoUri != null) {
-            val filename = UUID.randomUUID().toString()
-            val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
+        val filename = UUID.randomUUID().toString()
+        val ref = FirebaseStorage.getInstance().getReference("/images/$filename")
+        ref.putFile(selectedPhotoUri!!)
+            .addOnSuccessListener {
+                Log.d("SignUpActivity", "Successfully uploaded image: ${it.metadata?.path}")
 
-            ref.putFile(selectedPhotoUri!!)
-                .addOnSuccessListener {
-                    Log.d("SignUpActivity", "Successfully uploaded image: ${it.metadata?.path}")
-
-                    ref.downloadUrl.addOnSuccessListener {
-                        Log.d("SignUpActivity", "File location: $it")
-                        saveUserToFirebaseDataBase(it.toString())
-                    }
+                ref.downloadUrl.addOnSuccessListener {
+                    Log.d("SignUpActivity", "File location: $it")
+                    saveUserToFirebaseDataBase(it.toString())
                 }
-                .addOnFailureListener {
-                    Log.d("SignUpActivity", "Failed to upload image to firebase database")
-                }
-        }
+            }
+            .addOnFailureListener {
+                cardProgressBarSignUp.visibility = View.GONE
+                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+                Toast.makeText(applicationContext, "Gagal menyimpan data user.", Toast.LENGTH_SHORT).show()
+                Log.d("SignUpActivity", "Failed to upload image to firebase database")
+            }
     }
 
+    //Setelah email verifikasi telah terkirim dan foto sudah tersimpan ke firebase storage, Maka data user akan tersimpan
+    //di FirebaseDataBase
     private fun saveUserToFirebaseDataBase(profileImageUrl: String) {
         val uid = FirebaseAuth.getInstance().uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
@@ -270,6 +318,7 @@ class SignUpActivity : AppCompatActivity() {
             agreeCheckBox.isChecked.toString()
         )
 
+        // Jika data user tersimpan di database maka akan terbuka lagi activity signIn
         ref.setValue(user)
             .addOnSuccessListener {
                 Log.d("SignUpActivity", "Finally we saved the user to our Firebase Database")
@@ -285,7 +334,11 @@ class SignUpActivity : AppCompatActivity() {
                 )
                 startActivity(Intent)
             }
+
+            // Jika gagal memasukkan ke database maka, akan keluar pesan.
             .addOnFailureListener {
+                cardProgressBarSignUp.visibility = View.GONE
+                window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 Log.d("SignUpActivity", "Failed to save user to database")
                 Toast.makeText(
                     applicationContext,

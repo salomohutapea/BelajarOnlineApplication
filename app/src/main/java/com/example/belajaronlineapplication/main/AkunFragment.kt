@@ -31,6 +31,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class AkunFragment : Fragment() {
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -40,6 +41,7 @@ class AkunFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         fetchUsers()
 
+        //meng-link semua fitur di akun fragment activity ke ComingSoonActivity
         ubahNoHp_textview.setOnClickListener {
             val ubahNoHpIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
             requireActivity().startActivity(ubahNoHpIntent)
@@ -58,6 +60,7 @@ class AkunFragment : Fragment() {
         }
     }
 
+    //Untuk mengambil data user dari Firebase Database
     private fun fetchUsers() {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
         val ref = FirebaseDatabase.getInstance().getReference("/users")
