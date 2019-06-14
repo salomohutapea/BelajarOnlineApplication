@@ -25,11 +25,11 @@ class NewMessageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_message)
-
+        //Onclick event tombol back
         arrowBack.setOnClickListener {
             finish()
         }
-
+        //Menjalankan method FetchUser()
         FetchUser()
         recyclerview_newMessage.layoutManager = LinearLayoutManager(this)
     }
@@ -37,7 +37,7 @@ class NewMessageActivity : AppCompatActivity() {
     companion object {
         val USER_KEY = "USER_KEY"
     }
-
+    //Mengambil data TUTOR dan dimasukkan ke dalam adapter
     private fun FetchUser() {
         val ref = FirebaseDatabase.getInstance().getReference("/users")
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -52,11 +52,13 @@ class NewMessageActivity : AppCompatActivity() {
                     val userNewMessage = it.getValue(User::class.java)
                     if (userNewMessage != null) {
                         if (userNewMessage.uid != FirebaseAuth.getInstance().uid) {
+                            //Membuat setiap user yang login dengan password ini akan muncul di NewMessage, yang berarti tutor
                             if(userNewMessage.password == "tutormat" || userNewMessage.password == "tutorfis" || userNewMessage.password == "tutoring" || userNewMessage.password == "tutorbio" || userNewMessage.password == "tutorind" || userNewMessage.password == "tutorkim")
                                 adapter.add(UserItem(userNewMessage))
                         }
                     }
                 }
+                //Untuk mengklik setiap user yang terdapat di new message
                 adapter.setOnItemClickListener {item, view ->
                     val userItem = item as UserItem
                     val intent = Intent(view.context, ChatLogActivity::class.java)

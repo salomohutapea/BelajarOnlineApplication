@@ -57,6 +57,7 @@ class LatestMessageActivity : AppCompatActivity() {
         }
     }
 
+    // membaca setiap pesan yang masuk
     private fun listenForLatestMessage() {
         val fromId = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/latest-messages/$fromId")
@@ -89,7 +90,7 @@ class LatestMessageActivity : AppCompatActivity() {
     }
 
     val adapter = GroupAdapter<ViewHolder>()
-
+    //Memanggil user yang sedang login di aplikasi
     private fun fetchCurrentUser() {
         val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
