@@ -1,17 +1,19 @@
-package com.example.belajaronlineapplication.main.matematika.Lesson1
+package com.example.belajaronlineapplication.main.inggris.Lesson1Inggris
 
+import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.belajaronlineapplication.R
 import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
-import kotlinx.android.synthetic.main.activity_video.*
+import kotlinx.android.synthetic.main.activity_video_inggris1.*
 
-class VideoActivity : YouTubeBaseActivity() {
+class VideoInggris1 : YouTubeBaseActivity() {
+
     //Data untuk API youtube
     companion object {
-        val VIDEO_ID: String = "P3FEIS4Yvr0" //ID video youtube berasal dari : contoh www.youtu.be/P3FEIS4Yvr0
+        val VIDEO_ID: String = "JBb3DDtTNMQ" //ID video youtube
         val YOUTUBE_API_KEY: String = "AIzaSyCZl_NLt-sLAqSvzmXn6BnL-iLmbd1fVfk" //API KEY Youtube
     }
 
@@ -19,11 +21,11 @@ class VideoActivity : YouTubeBaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_video)
+        setContentView(R.layout.activity_video_inggris1)
 
         initUI()
 
-        youtubePlayer1.initialize(YOUTUBE_API_KEY, youtubePlayerInit)
+        youtubePlayer2.initialize(YOUTUBE_API_KEY, youtubePlayerInit)
         // Tombol back untuk kembali ke activity sebelumnya
         arrowBackVideo.setOnClickListener {
             finish()
@@ -39,10 +41,10 @@ class VideoActivity : YouTubeBaseActivity() {
 
             override fun onInitializationSuccess(
                 p0: YouTubePlayer.Provider?,
-                youtubePlayer1: YouTubePlayer?,
+                youtubePlayer2: YouTubePlayer?,
                 p2: Boolean
             ) {
-                youtubePlayer1?.loadVideo(VIDEO_ID)
+                youtubePlayer2?.loadVideo(VIDEO_ID)
             }
         }
     }

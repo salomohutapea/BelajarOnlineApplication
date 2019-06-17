@@ -82,7 +82,7 @@ class SignInActivity : AppCompatActivity() {
         password = etPassword.text.toString()
         email = etUsername.text.toString()
 
-        //mengecek apakah email dan password belum diisi, maka akan muncul pesan.
+        //mengecek apakah textbox email dan password belum diisi, maka akan muncul pesan.
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Email dan password tidak boleh kosong", Toast.LENGTH_SHORT).show()
             return
@@ -107,7 +107,7 @@ class SignInActivity : AppCompatActivity() {
                 val user = FirebaseAuth.getInstance().currentUser
                 val emailVerified = user?.isEmailVerified
 
-                // mengecek apakah email user sudah terverifikasi, jika email belum terverifikasi maka akan muncul activity email belum verifief
+                // mengecek apakah email user sudah terverifikasi, jika email belum terverifikasi maka akan muncul activity email belum verified
                 if (emailVerified == true) {
                     window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                     cardProgressBarSignIn.visibility = View.GONE

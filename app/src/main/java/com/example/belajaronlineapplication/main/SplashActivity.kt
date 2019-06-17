@@ -9,7 +9,7 @@ import com.example.belajaronlineapplication.signinup.SignInActivity
 // Activity untuk menampilkan splash screen ketika aplikasi dibuka
 class SplashActivity : AppCompatActivity() {
     private var mDelayHandler: Handler? = null
-    private val SPLASH_DELAY: Long = 3000 //3 seconds
+    private val SPLASH_DELAY: Long = 1750 //1.75 seconds
 
     internal val mRunnable: Runnable = Runnable {
         if (!isFinishing) {

@@ -8,7 +8,7 @@
         android:padding="40px"
         android:orientation="vertical"
         android:background="@drawable/gradient_home"
-        tools:context=".main.matematika.Lesson1.VideoActivity">
+        tools:context=".main.inggris.Lesson1Inggris.VideoInggris1">
 
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                   android:id="@+id/lrTopBarVideo"
@@ -24,12 +24,9 @@
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
                       android:orientation="vertical">
             <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:text="Trigonometri" android:textSize="60px" android:layout_marginLeft="40px"
+                      android:text="Caption Text" android:textSize="60px" android:layout_marginLeft="40px"
                       android:textColor="#FFF" android:id="@+id/titleMate"/>
-            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:text="Sudut rangkap" android:id="@+id/titleKelas" android:textSize="30px"
-                      android:layout_marginLeft="40px"
-                      android:textColor="#FFF"/>
+
         </LinearLayout>
 
     </LinearLayout>
@@ -47,43 +44,10 @@
                                         app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp">
 
         <com.google.android.youtube.player.YouTubePlayerView android:layout_width="match_parent"
-                                                             android:id="@+id/youtubePlayer1"
+                                                             android:id="@+id/youtubePlayer2"
                                                              android:layout_height="wrap_content">
         </com.google.android.youtube.player.YouTubePlayerView>
     </android.support.v7.widget.CardView>
 
-    <!--<android.support.v7.widget.CardView android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_marginTop="10px" app:cardCornerRadius="20px">-->
-    <!--<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"-->
-    <!--android:orientation="vertical">-->
-    <!--<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Live Chat"-->
-    <!--android:textColor="#000" android:paddingHorizontal="20px" android:paddingVertical="20px"-->
-    <!--android:textSize="15sp"/>-->
-    <!--<View-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="1dp"-->
-    <!--android:background="#CFCFCF"/>-->
-    <!--</LinearLayout>-->
-    <!--<LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"-->
-    <!--android:orientation="vertical">-->
-
-    <!--<ScrollView android:layout_width="match_parent" android:layout_height="match_parent"-->
-    <!--android:layout_weight="1">-->
-
-    <!--</ScrollView>-->
-    <!--<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"-->
-    <!--android:orientation="horizontal" android:layout_marginBottom="40px"-->
-    <!--android:layout_marginHorizontal="20px" android:layout_marginTop="40px">-->
-    <!--<EditText android:layout_width="328dp" android:layout_height="wrap_content"-->
-    <!--android:layout_gravity="center"-->
-    <!--android:layout_weight="1"/>-->
-    <!--<ImageView android:layout_marginLeft="10px" android:layout_width="match_parent"-->
-    <!--android:layout_height="30dp" android:layout_gravity="center" android:layout_weight="10"-->
-    <!--android:src="@drawable/ic_send_black_24dp"/>-->
-    <!--</LinearLayout>-->
-    <!--</LinearLayout>-->
-
-    <!--</android.support.v7.widget.CardView>-->
 
 </android.support.constraint.ConstraintLayout>
