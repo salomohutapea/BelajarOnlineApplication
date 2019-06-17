@@ -39,6 +39,7 @@ private const val ARG_PARAM2 = "param2"
  */
 
 class HomeFragment : Fragment() {
+    var flag:Int = 0
     lateinit var textGreetings: String
 
     override fun onCreateView(
@@ -50,7 +51,6 @@ class HomeFragment : Fragment() {
     //Untuk menge-link semua activity ke activity lainnya
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkUser()
         lrMatematika.setOnClickListener {
             val matematikaIntent = Intent(requireActivity(), MatematikaActivity::class.java)
             requireActivity().startActivity(matematikaIntent)
@@ -83,15 +83,7 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireActivity(), LatestMessageActivity::class.java)
             requireActivity().startActivity(intent)
         }
-        //fungsi refresh main menu
-        my_swipeRefresh_Layout.setOnRefreshListener {
-            checkUser()
-            fetchUsersComplete()
-        }
-    }
-
-    private fun fetchUsersComplete() {
-        my_swipeRefresh_Layout.isRefreshing = false
+        checkUser()
     }
 
     //Method ini mengecek apakah user telah login
@@ -122,6 +114,7 @@ class HomeFragment : Fragment() {
                         // Mengunakan library pihak ke 3 untuk nge mendapatkan gambar dari profile image url user.
                         Picasso.get().load(user.profileImageUrl).into(profile_button)
                         greetings_textview.text = textGreetings
+                        flag = 1
                     }
                 }
             }

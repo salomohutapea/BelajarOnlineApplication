@@ -97,6 +97,7 @@ class SignInActivity : AppCompatActivity() {
         //menyembunyikan keyboard
         hideKeyboard()
         cardProgressBarSignIn.visibility = View.VISIBLE
+        rlProgress.visibility = View.VISIBLE
         FirebaseDatabase.getInstance().setPersistenceEnabled(true)
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
             .addOnCompleteListener {
@@ -110,7 +111,7 @@ class SignInActivity : AppCompatActivity() {
                 // mengecek apakah email user sudah terverifikasi, jika email belum terverifikasi maka akan muncul activity email belum verified
                 if (emailVerified == true) {
                     window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                    cardProgressBarSignIn.visibility = View.GONE
+                    rlProgress.visibility = View.GONE
                     Log.d("Main", "Successfully login user with uid: ${it.result?.user?.uid}")
                     val mainIntent = Intent(
                         this@SignInActivity,
@@ -123,7 +124,7 @@ class SignInActivity : AppCompatActivity() {
                 //Jika sudah terverifikasi maka user akan diarahkan ke home activity
                 else {
                     window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-                    cardProgressBarSignIn.visibility = View.GONE
+                    rlProgress.visibility = View.GONE
                     val notVerifiedIntent = Intent(
                         this@SignInActivity,
                         NotVerifiedActivity::class.java
@@ -137,6 +138,7 @@ class SignInActivity : AppCompatActivity() {
             .addOnFailureListener {
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 cardProgressBarSignIn.visibility = View.GONE
+                rlProgress.visibility = View.GONE
                 Log.d("SignInActivity", "Failed to login user: ${it.message}")
                 Toast.makeText(this, "Login gagal", Toast.LENGTH_SHORT).show()
             }
