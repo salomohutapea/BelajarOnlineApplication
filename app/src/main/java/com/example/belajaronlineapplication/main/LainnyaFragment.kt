@@ -40,9 +40,9 @@ class LainnyaFragment : Fragment() {
             requireActivity().startActivity(signInIntent)
         }
 
-        // Menge-link activity ke under Construction activity
+        // Menge-link activity ke 'hubungi kami' activity
         rlHubungi.setOnClickListener {
-            val hubungiIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
+            val hubungiIntent = Intent(requireActivity(), hubungi_kami::class.java)
             requireActivity().startActivity(hubungiIntent)
         }
         rlTentang.setOnClickListener {

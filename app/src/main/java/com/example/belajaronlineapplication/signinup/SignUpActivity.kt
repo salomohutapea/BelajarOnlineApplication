@@ -230,7 +230,7 @@ class SignUpActivity : AppCompatActivity() {
         )
 //        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
         hideKeyboard()
-        cardProgressBarSignUp.visibility = View.VISIBLE
+        rlProgressSignUp.visibility = View.VISIBLE
 
         //Untuk membuat akun aplikasi dari user berdasarkan email dan password yang sudah di input
         //menggunakan firebase authentication
@@ -242,7 +242,7 @@ class SignUpActivity : AppCompatActivity() {
                 sendEmailVerification()
             }.addOnFailureListener {
                 Log.d("SignUpActivity", "Failed to create user: ${it.message}")
-                cardProgressBarSignUp.visibility = View.GONE
+                rlProgressSignUp.visibility = View.GONE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 Toast.makeText(this, "Failed to create user: ${it.message}", Toast.LENGTH_SHORT).show()
             }
@@ -264,7 +264,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener(this) { task ->
-                cardProgressBarSignUp.visibility = View.GONE
+                rlProgressSignUp.visibility = View.GONE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 Toast.makeText(applicationContext, "Gagal mengirimkan email verifikasi.", Toast.LENGTH_SHORT).show()
             }
@@ -284,7 +284,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
             }
             .addOnFailureListener {
-                cardProgressBarSignUp.visibility = View.GONE
+                rlProgressSignUp.visibility = View.GONE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 Toast.makeText(applicationContext, "Gagal menyimpan data user.", Toast.LENGTH_SHORT).show()
                 Log.d("SignUpActivity", "Failed to upload image to firebase database")
@@ -337,7 +337,7 @@ class SignUpActivity : AppCompatActivity() {
 
             // Jika gagal memasukkan ke database maka, akan keluar pesan.
             .addOnFailureListener {
-                cardProgressBarSignUp.visibility = View.GONE
+                rlProgressSignUp.visibility = View.GONE
                 window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
                 Log.d("SignUpActivity", "Failed to save user to database")
                 Toast.makeText(

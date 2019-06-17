@@ -3,6 +3,7 @@
           package="com.example.belajaronlineapplication">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
             android:allowBackup="true"
@@ -12,7 +13,37 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".main.TentangKami">
+        <activity android:name=".main.kimia.Lesson1Kimia.VideoKim1">
+        </activity>
+        <activity android:name=".main.kimia.Lesson1Kimia.LatihanSoalKim1">
+        </activity>
+        <activity android:name=".main.kimia.KimiaActivity">
+        </activity>
+        <activity android:name=".main.inggris.Lesson1Inggris.VideoInggris1">
+        </activity>
+        <activity android:name=".main.inggris.Lesson1Inggris.LatihanSoalInggris1">
+        </activity>
+        <activity android:name=".main.inggris.InggrisActivity">
+        </activity>
+        <activity android:name=".main.indo.Lesson1Indo.VideoIndo1">
+        </activity>
+        <activity android:name=".main.indo.Lesson1Indo.LatihanSoalIndo1">
+        </activity>
+        <activity android:name=".main.indo.IndoActivity">
+        </activity>
+        <activity android:name=".main.fisika.Lesson1Fis.LatihanSoalFis1">
+        </activity>
+        <activity android:name=".main.fisika.Lesson1Fis.VideoFis1">
+        </activity>
+        <activity android:name=".main.fisika.FisikaActivity">
+        </activity>
+        <activity android:name=".main.biologi.Lesson1Bio.VideoBio1">
+        </activity>
+        <activity android:name=".main.biologi.Lesson1Bio.LatihanSoalBio1">
+        </activity>
+        <activity android:name=".main.biologi.BiologyActivity">
+        </activity>
+        <activity android:name=".main.hubungi_kami">
         </activity>
         <activity
                 android:name=".main.messages.ChatLogActivity"
@@ -44,11 +75,19 @@
                 android:screenOrientation="portrait">
         </activity>
         <activity
+<<<<<<< HEAD
                 android:name=".main.matematika.Lesson1.VideoActivity"
                 android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".main.matematika.Lesson1.LatihanSoalActivity"
+=======
+                android:name=".main.matematika.Lesson1Mat.VideoMat1"
+                android:screenOrientation="portrait">
+        </activity>
+        <activity
+                android:name=".main.matematika.Lesson1Mat.LatihanSoalMat1"
+>>>>>>> bb8994fe9aec2bb509b159bed7b40a158f64258f
                 android:screenOrientation="portrait">
         </activity>
         <activity

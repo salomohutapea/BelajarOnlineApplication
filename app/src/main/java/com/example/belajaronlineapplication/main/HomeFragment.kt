@@ -11,6 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import com.example.belajaronlineapplication.R
+import com.example.belajaronlineapplication.main.biologi.BiologyActivity
+import com.example.belajaronlineapplication.main.fisika.FisikaActivity
+import com.example.belajaronlineapplication.main.indo.IndoActivity
+import com.example.belajaronlineapplication.main.inggris.InggrisActivity
+import com.example.belajaronlineapplication.main.kimia.KimiaActivity
 import com.example.belajaronlineapplication.main.matematika.MatematikaActivity
 import com.example.belajaronlineapplication.main.messages.LatestMessageActivity
 import com.example.belajaronlineapplication.models.User
@@ -34,6 +39,7 @@ private const val ARG_PARAM2 = "param2"
  */
 
 class HomeFragment : Fragment() {
+    var flag:Int = 0
     lateinit var textGreetings: String
 
     override fun onCreateView(
@@ -45,29 +51,28 @@ class HomeFragment : Fragment() {
     //Untuk menge-link semua activity ke activity lainnya
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkUser()
         lrMatematika.setOnClickListener {
             val matematikaIntent = Intent(requireActivity(), MatematikaActivity::class.java)
             requireActivity().startActivity(matematikaIntent)
         }
         lrBiologi.setOnClickListener {
-            val biologiIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
+            val biologiIntent = Intent(requireActivity(), BiologyActivity::class.java)
             requireActivity().startActivity(biologiIntent)
         }
         lrFisika.setOnClickListener {
-            val fisikaIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
+            val fisikaIntent = Intent(requireActivity(), FisikaActivity::class.java)
             requireActivity().startActivity(fisikaIntent)
         }
         lrKimia.setOnClickListener {
-            val kimiaIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
+            val kimiaIntent = Intent(requireActivity(), KimiaActivity::class.java)
             requireActivity().startActivity(kimiaIntent)
         }
         lrIndo.setOnClickListener {
-            val indoIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
+            val indoIntent = Intent(requireActivity(), IndoActivity::class.java)
             requireActivity().startActivity(indoIntent)
         }
         lrInggris.setOnClickListener {
-            val inggrisIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
+            val inggrisIntent = Intent(requireActivity(), InggrisActivity::class.java)
             requireActivity().startActivity(inggrisIntent)
         }
         profile_button.setOnClickListener {
@@ -78,15 +83,7 @@ class HomeFragment : Fragment() {
             val intent = Intent(requireActivity(), LatestMessageActivity::class.java)
             requireActivity().startActivity(intent)
         }
-        //fungsi refresh main menu
-        my_swipeRefresh_Layout.setOnRefreshListener {
-            checkUser()
-            fetchUsersComplete()
-        }
-    }
-
-    private fun fetchUsersComplete() {
-        my_swipeRefresh_Layout.isRefreshing = false
+        checkUser()
     }
 
     //Method ini mengecek apakah user telah login
@@ -117,6 +114,7 @@ class HomeFragment : Fragment() {
                         // Mengunakan library pihak ke 3 untuk nge mendapatkan gambar dari profile image url user.
                         Picasso.get().load(user.profileImageUrl).into(profile_button)
                         greetings_textview.text = textGreetings
+                        flag = 1
                     }
                 }
             }

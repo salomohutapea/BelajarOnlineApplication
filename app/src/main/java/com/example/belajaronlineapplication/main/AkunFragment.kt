@@ -9,6 +9,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.example.belajaronlineapplication.R
 import com.example.belajaronlineapplication.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -47,8 +48,26 @@ class AkunFragment : Fragment() {
             requireActivity().startActivity(ubahNoHpIntent)
         }
         ubahSandi_textview.setOnClickListener {
-            val ubahSandiIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
-            requireActivity().startActivity(ubahSandiIntent)
+            FirebaseAuth.getInstance().sendPasswordResetEmail(FirebaseAuth.getInstance().currentUser?.email.toString())
+                .addOnCompleteListener { task ->
+
+                    //Jika email reset password telah terkirim...
+                    if (task.isSuccessful) {
+                        Toast.makeText(
+                            activity,
+                            "Link ubah password sudah dikirimkan ke email anda!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                    //Jika gagal mengirimkan email reset password, atau user tidak terdapat di firebase authentication
+                    else {
+                        Toast.makeText(
+                            activity,
+                            "Gagal mengirimkan email ubah password!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
         }
         tvUbahDetailProfil.setOnClickListener {
             val ubahDetailProfilIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
