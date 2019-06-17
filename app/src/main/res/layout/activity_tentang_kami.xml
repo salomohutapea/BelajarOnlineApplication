@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:background="@drawable/gradient_matpel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".main.TentangKami">
+
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:orientation="horizontal" android:layout_margin="40px">
+
+        <android.support.v7.widget.AppCompatImageView android:layout_width="70px" android:layout_height="70px"
+                                                      android:src="@drawable/ic_left_arrow1"
+                                                      android:id="@+id/arrowBack"
+                                                      android:layout_gravity="center"/>
+         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:text="Tentang Kami" android:textSize="60px" android:layout_marginLeft="40px"
+                      android:textColor="#FFF" android:id="@+id/titleMate"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView android:layout_width="match_parent"
+                                        android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="This is me"/>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
