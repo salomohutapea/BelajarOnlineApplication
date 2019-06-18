@@ -46,7 +46,7 @@ class LainnyaFragment : Fragment() {
             requireActivity().startActivity(hubungiIntent)
         }
         rlTentang.setOnClickListener {
-            val tentangIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
+            val tentangIntent = Intent(requireActivity(), TentangKami::class.java)
             requireActivity().startActivity(tentangIntent)
         }
     }
