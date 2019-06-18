@@ -94,7 +94,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         // Untuk menampilkan 3 pilihan kurikulum di spinner
-        val curriculum = arrayOf("-", "K13 Revisi", "K13", "KTSP")
+        val curriculum = arrayOf("-", "K13 Revisi")
         val adapterKurikulum = ArrayAdapter(
             this, // Context
             android.R.layout.simple_spinner_item, // Layout

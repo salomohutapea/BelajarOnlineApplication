@@ -75,19 +75,11 @@
                 android:screenOrientation="portrait">
         </activity>
         <activity
-<<<<<<< HEAD
-                android:name=".main.matematika.Lesson1.VideoActivity"
-                android:screenOrientation="portrait">
-        </activity>
-        <activity
-                android:name=".main.matematika.Lesson1.LatihanSoalActivity"
-=======
                 android:name=".main.matematika.Lesson1Mat.VideoMat1"
                 android:screenOrientation="portrait">
         </activity>
         <activity
                 android:name=".main.matematika.Lesson1Mat.LatihanSoalMat1"
->>>>>>> bb8994fe9aec2bb509b159bed7b40a158f64258f
                 android:screenOrientation="portrait">
         </activity>
         <activity
