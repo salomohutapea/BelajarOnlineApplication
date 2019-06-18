@@ -14,7 +14,7 @@ class VideoKim1 : YouTubeBaseActivity() {
 
     //Data untuk API youtube
     companion object {
-        val VIDEO_ID: String = "oDxyGiaI1uk" //ID video youtube
+        val VIDEO_ID: String = "oDxyGiaI1uk" //ID video youtube dan url
         val YOUTUBE_API_KEY: String = "AIzaSyCZl_NLt-sLAqSvzmXn6BnL-iLmbd1fVfk" //API KEY Youtube
     }
 

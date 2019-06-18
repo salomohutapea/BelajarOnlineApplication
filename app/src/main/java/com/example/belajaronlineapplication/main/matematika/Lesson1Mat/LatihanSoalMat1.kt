@@ -11,6 +11,7 @@ class LatihanSoalMat1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latihan_soal_mat1)
+        //mengarahkan tombol back ke activity sebelumnya
         arrowBackLatihan.setOnClickListener {
             finish()
         }

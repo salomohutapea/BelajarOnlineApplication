@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_video_inggris1.*
 
 class VideoInggris1 : YouTubeBaseActivity() {
 
-    //Data untuk API youtube
+    //Data untuk API youtube dan url
     companion object {
         val VIDEO_ID: String = "JBb3DDtTNMQ" //ID video youtube
         val YOUTUBE_API_KEY: String = "AIzaSyCZl_NLt-sLAqSvzmXn6BnL-iLmbd1fVfk" //API KEY Youtube

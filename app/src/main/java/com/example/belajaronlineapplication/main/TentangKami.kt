@@ -12,10 +12,12 @@ class TentangKami : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tentang_kami)
+        //Mengarahkan tombol back ke activity sebelumya
         arrowBack.setOnClickListener {
             finish()
         }
 
+        // Mengarahkan tombol button ke alamat url yang sudah di hubungkan
         emailSal.setOnClickListener {
             val url = "https://www.salomohutapea.com/"
             val i = Intent(Intent.ACTION_VIEW)
@@ -23,6 +25,7 @@ class TentangKami : AppCompatActivity() {
             startActivity(i)
         }
 
+        // Mengarahkan tombol button ke alamat url yang sudah di hubungkan
         emailAldy.setOnClickListener {
             val url = "https://www.rivaldynaiborhu.com/"
             val i = Intent(Intent.ACTION_VIEW)

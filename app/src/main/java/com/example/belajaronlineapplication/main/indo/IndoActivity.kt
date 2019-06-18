@@ -31,7 +31,7 @@ class IndoActivity : AppCompatActivity() {
             startActivity(latihanSoalIntent)
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
         }
-        //Jika linear layout topik1 diclick, maka akan menampilkan VideoBio1, yang berisi video youtube
+        //Jika linear layout topik1 diclick, maka akan menampilkan VideIndo1, yang berisi video youtube
         llTopik1.setOnClickListener {
             val videoIntent = Intent(
                 this@IndoActivity,

@@ -10,6 +10,7 @@ class LatihanSoalBio1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latihan_soal_bio1)
+        //mengaraahkan tombol kembali ke menu sebelumnya
         arrowBackLatihan.setOnClickListener {
             finish()
         }

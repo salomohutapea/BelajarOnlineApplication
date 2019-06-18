@@ -10,6 +10,8 @@ class LatihanSoalIndo1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latihan_soal_indo1)
+
+        //Fungsi untuk mengarahkan anak panah kembali ke activity sebelumnya
         arrowBackLatihan.setOnClickListener {
             finish()
         }

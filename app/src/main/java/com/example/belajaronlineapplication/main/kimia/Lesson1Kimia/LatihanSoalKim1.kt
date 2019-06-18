@@ -10,6 +10,7 @@ class LatihanSoalKim1 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_latihan_soal_kim1)
+        //mengarahkan tombol panah ke activity sebelumnya
         arrowBackLatihan.setOnClickListener {
             finish()
         }
