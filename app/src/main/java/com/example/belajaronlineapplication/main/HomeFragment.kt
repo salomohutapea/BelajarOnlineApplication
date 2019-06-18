@@ -2,6 +2,8 @@ package com.example.belajaronlineapplication.main
 
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -40,7 +42,8 @@ private const val ARG_PARAM2 = "param2"
  */
 
 class HomeFragment : Fragment() {
-    var flag:Int = 0
+
+    var flag: Int = 0
     lateinit var textGreetings: String
 
     override fun onCreateView(

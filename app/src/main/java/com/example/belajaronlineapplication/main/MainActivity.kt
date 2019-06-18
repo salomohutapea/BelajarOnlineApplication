@@ -4,16 +4,18 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
+import android.view.WindowManager
 import com.example.belajaronlineapplication.R
 import com.google.firebase.messaging.FirebaseMessaging
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(){
 
     // Berisi 3 fragment yaitu Home Fragment, Akun fragment, dan Lainnya Fragment
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.navigation_home -> {
+            com.example.belajaronlineapplication.R.id.navigation_home -> {
                 replaceFragment(HomeFragment())
                 return@OnNavigationItemSelectedListener true
             }
@@ -32,7 +34,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(com.example.belajaronlineapplication.R.layout.activity_main)
         nav_view.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         replaceFragment(HomeFragment())
         FirebaseMessaging.getInstance().isAutoInitEnabled = true
