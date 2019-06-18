@@ -43,10 +43,6 @@ class AkunFragment : Fragment() {
         fetchUsers()
 
         //meng-link semua fitur di akun fragment activity ke ComingSoonActivity
-        ubahNoHp_textview.setOnClickListener {
-            val ubahNoHpIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
-            requireActivity().startActivity(ubahNoHpIntent)
-        }
         ubahSandi_textview.setOnClickListener {
             FirebaseAuth.getInstance().sendPasswordResetEmail(FirebaseAuth.getInstance().currentUser?.email.toString())
                 .addOnCompleteListener { task ->
@@ -68,10 +64,6 @@ class AkunFragment : Fragment() {
                         ).show()
                     }
                 }
-        }
-        tvUbahDetailProfil.setOnClickListener {
-            val ubahDetailProfilIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
-            requireActivity().startActivity(ubahDetailProfilIntent)
         }
         akunProfilePicture.setOnClickListener {
             val ubahGambarIntent = Intent(requireActivity(), ComingSoonActivity::class.java)
